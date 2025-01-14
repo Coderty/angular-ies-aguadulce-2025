@@ -1,16 +1,17 @@
 import { Component, inject, signal } from '@angular/core';
 import { PokemonService } from '../services/pokemon.service';
-import { PokemonRes } from '../models/pokemon.interface';
+import { PokemonsRes } from '../models/pokemon.interface';
 import { UpperCasePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-list',
-  imports: [UpperCasePipe],
+  imports: [UpperCasePipe, RouterLink],
   templateUrl: './pokemon-list.component.html',
   styleUrl: './pokemon-list.component.scss',
 })
 export class PokemonListComponent {
-  pokemonsRes = signal<PokemonRes>({} as PokemonRes);
+  pokemonsRes = signal<PokemonsRes>({} as PokemonsRes);
   private pokemonService = inject(PokemonService);
 
   constructor() {

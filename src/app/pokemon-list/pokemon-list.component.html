@@ -1,6 +1,6 @@
 <div class="container">
   @for (pokemon of pokemonsRes().results; track $index) {
-  <div class="pokemon-card">
+  <div class="pokemon-card" [routerLink]="['/pokemon', pokemon.name]">
     <p>{{ pokemon.name | uppercase }}</p>
     <div>
       <img
