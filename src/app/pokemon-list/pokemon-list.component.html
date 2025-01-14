@@ -1,0 +1,23 @@
+<div class="container">
+  @for (pokemon of pokemonsRes().results; track $index) {
+  <div class="pokemon-card">
+    <p>{{ pokemon.name | uppercase }}</p>
+    <div>
+      <img
+        height="100"
+        [src]="getPokemonImg(pokemon.name)"
+        [alt]="'Pokemon llamado ' + pokemon.name"
+      />
+    </div>
+  </div>
+
+  }
+</div>
+<div class="paginator">
+  <button (click)="prevPage()" [disabled]="!pokemonsRes().previous">
+    Pagina anterior
+  </button>
+  <button (click)="nextPage()" [disabled]="!pokemonsRes().next">
+    Pagina siguiente
+  </button>
+</div>
