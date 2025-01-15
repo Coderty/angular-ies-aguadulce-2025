@@ -5,14 +5,14 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonDetail } from '../models/pokemon.interface';
 import { PokemonService } from '../services/pokemon.service';
+import { ToolbarComponent } from '../toolbar/toolbar.component';
 
 @Component({
   selector: 'app-pokemon-detail',
-  imports: [JsonPipe],
-
+  imports: [ToolbarComponent],
   templateUrl: './pokemon-detail.component.html',
   styleUrl: './pokemon-detail.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,10 +20,11 @@ import { PokemonService } from '../services/pokemon.service';
 export class PokemonDetailComponent {
   pokemon = signal<PokemonDetail>({} as PokemonDetail);
   private pokemonService = inject(PokemonService);
-  private route = inject(ActivatedRoute);
+  private activatedRoute = inject(ActivatedRoute);
+  private router = inject(Router);
 
   constructor() {
-    const pokemonName = this.route.snapshot.params['pokemonName'];
+    const pokemonName = this.activatedRoute.snapshot.params['pokemonName'];
     this.getPokemon(pokemonName);
   }
 
@@ -32,5 +33,8 @@ export class PokemonDetailComponent {
       console.log(pokemon);
       this.pokemon.set(pokemon);
     });
+  }
+  redirecTo(url: string) {
+    this.router.navigate([url]);
   }
 }

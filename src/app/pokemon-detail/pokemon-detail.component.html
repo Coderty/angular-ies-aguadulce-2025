@@ -1,10 +1,18 @@
+<app-toolbar
+  (redirectTo)="redirecTo($event)"
+  [backButton]="true"
+  [title]="pokemon().name + ' - ' + pokemon().id"
+></app-toolbar>
 <div class="pokemon-border">
   <div class="pokemon-card">
     <h2>{{ pokemon().name }} (#{{ pokemon().id }})</h2>
+    @if(pokemon().sprites?.front_default){
     <img
-      [src]="pokemon().sprites.front_default"
+      [src]="pokemon().sprites?.front_default"
       alt="Sprite of {{ pokemon().name }}"
     />
+    }@else{ cargando... }
+
     <p>Experience: {{ pokemon().base_experience }}</p>
     <p>Height: {{ pokemon().height }} | Weight: {{ pokemon().weight }}</p>
     <div>

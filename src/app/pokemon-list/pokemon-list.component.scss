@@ -1,5 +1,6 @@
 :host {
   .container {
+    margin: 90px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between; /* Asegura que los elementos estén distribuidos equitativamente */
@@ -41,7 +42,8 @@
     }
   }
   .paginator {
-    margin-top: 32px;
+    padding: 40px 0;
+
     width: 100%;
     display: flex;
     gap: 8px;

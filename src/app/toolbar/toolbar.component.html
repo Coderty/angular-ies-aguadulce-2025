@@ -1,0 +1,25 @@
+<div class="toolbar">
+  <div class="left">
+    @if(backButton){
+    <div class="back-button" (click)="redirectTo.emit('/list')">
+      <img
+        src="https://www.svgrepo.com/show/305377/arrow-back.svg"
+        alt="Back button"
+        height="30px"
+      />
+    </div>
+    }
+
+    <div class="logo" (click)="redirectTo.emit('/')">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg"
+        alt="Logo de Pokemon"
+        height="60px"
+      />
+    </div>
+  </div>
+
+  <div class="title">
+    {{ title }}
+  </div>
+</div>

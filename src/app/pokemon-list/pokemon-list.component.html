@@ -1,3 +1,4 @@
+<app-toolbar [title]="'POKEDEX'" (redirectTo)="redirecTo($event)"></app-toolbar>
 <div class="container">
   @for (pokemon of pokemonsRes().results; track $index) {
   <div class="pokemon-card" [routerLink]="['/pokemon', pokemon.name]">
@@ -10,7 +11,6 @@
       />
     </div>
   </div>
-
   }
 </div>
 <div class="paginator">
