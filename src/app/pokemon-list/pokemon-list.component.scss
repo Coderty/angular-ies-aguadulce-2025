@@ -1,0 +1,52 @@
+:host {
+  .container {
+    margin: 0 90px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Asegura que los elementos estén distribuidos equitativamente */
+
+    .pokemon-card {
+      cursor: pointer;
+      width: 250px;
+      border: 3px solid #f2f2f2;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      text-align: center;
+      background-color: #f0f8ff;
+      background-size: cover;
+      color: #333;
+      margin: 10px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .pokemon-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .pokemon-card p {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ec5656;
+      margin: 12px 0;
+    }
+
+    .pokemon-card img {
+      padding: 8px;
+      margin: 20px 0;
+      border-radius: 8px;
+      border: 4px solid #ffd700;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      min-width: 60px;
+    }
+  }
+  .paginator {
+    padding: 40px 0;
+
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+}

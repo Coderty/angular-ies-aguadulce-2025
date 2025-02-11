@@ -1,0 +1,36 @@
+<!-- dividir en componentes -->
+<app-toolbar [title]="'POKEDEX'" (redirectTo)="redirecTo($event)"></app-toolbar>
+<div class="paginator">
+  <button mat-fab (click)="prevPage()" [disabled]="!pokemonsRes().previous">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <button mat-fab (click)="nextPage()" [disabled]="!pokemonsRes().next">
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</div>
+@if (loading()) {
+  <app-spinner />
+} @else {
+  <div class="container">
+    @for (pokemon of pokemonsRes().results; track $index) {
+      <div class="pokemon-card" [routerLink]="['/pokemon', pokemon.name]">
+        <p>{{ pokemon.name | uppercase }}</p>
+        <div>
+          <img
+            height="100"
+            [src]="getPokemonImg(pokemon.name)"
+            [alt]="'Pokemon llamado ' + pokemon.name"
+          />
+        </div>
+      </div>
+    }
+  </div>
+  <div class="paginator">
+    <button mat-fab (click)="prevPage()" [disabled]="!pokemonsRes().previous">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <button mat-fab (click)="nextPage()" [disabled]="!pokemonsRes().next">
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </div>
+}

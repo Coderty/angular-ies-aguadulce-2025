@@ -1,0 +1,45 @@
+<app-toolbar
+  (redirectTo)="redirecTo($event)"
+  [backButton]="true"
+  [title]="
+    (pokemon()?.name ?? 'pokemon...') + ' - ' + (pokemon()?.id ?? 'id...')
+  "
+/>
+
+@if(loading()) {
+<app-spinner />
+} @else {
+<div class="pokemon-border">
+  <div class="pokemon-card">
+    <h2>{{ pokemon()?.name }} (#{{ pokemon()?.id }})</h2>
+    @if(pokemon()?.sprites?.front_default){
+    <img
+      [src]="pokemon()?.sprites?.front_default"
+      alt="Sprite of {{ pokemon()?.name }}"
+    />
+    }@else{ cargando... }
+
+    <p>Experience: {{ pokemon()?.base_experience }}</p>
+    <p>Height: {{ pokemon()?.height }} | Weight: {{ pokemon()?.weight }}</p>
+    <div>
+      <h4>Types</h4>
+      <ul>
+        @for (type of pokemon()?.types; track $index) {
+        <li>{{ type.type.name }}</li>
+        }
+      </ul>
+    </div>
+    <div>
+      <h4>Abilities</h4>
+      <ul>
+        @for (ability of pokemon()?.abilities; track $index) {
+        <li>
+          {{ ability.ability.name }}
+        </li>
+
+        }
+      </ul>
+    </div>
+  </div>
+</div>
+}
