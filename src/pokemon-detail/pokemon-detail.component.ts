@@ -1,14 +1,21 @@
-import { UpperCasePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 @Component({
   selector: 'app-pokemon-detail',
-  imports: [UpperCasePipe],
+  imports: [],
   templateUrl: `./pokemon-detail.component.html`,
   styleUrl: './pokemon-detail.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokemonDetailComponent {
-  pokemon = 'Pikachu';
-  
+  @Input() pokemon: string = '';
+  @Input() imagen: string = '';
+  @Input() habilities: string[] = [];
+  @Output() clickName = new EventEmitter<string>();
 }
